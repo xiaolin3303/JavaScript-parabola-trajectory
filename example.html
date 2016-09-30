@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Parabola Trajectory Examples</title>
+	<style type="text/css">
+		html, body {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		.dot {
+			position: absolute;
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			background: #55c5dc;
+			border: 3px solid #ddd;
+			left: 10px;
+			top: 400px;
+		}
+	</style>
+	<script type="text/javascript" src="src/parabola.js"></script>
+</head>
+<body>
+	<i class="dot"></i>
+
+	<script type="text/javascript">
+		var target = document.querySelector('.dot');
+		var parabola = new Parabola({
+			startPos: {
+				left: 10,
+				top: 400
+			},
+			endPos: {
+				left: 400,
+				top: 80
+			},
+			onStep (pos) {
+				target.style.left = pos.left + 'px';
+				target.style.top = pos.top + 'px';
+			},
+			onFinish (pos) {
+				console.log('Animation Finished!');
+			}
+		});
+
+		parabola.start();
+	</script>
+</body>
+</html>
