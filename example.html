@@ -17,36 +17,41 @@
 			border-radius: 50%;
 			background: #55c5dc;
 			border: 3px solid #ddd;
-			left: 10px;
-			top: 400px;
+			left: 100px;
+			top: 300px;
 		}
 	</style>
 	<script type="text/javascript" src="src/parabola.js"></script>
 </head>
 <body>
+	<button>Run</button>
 	<i class="dot"></i>
 
 	<script type="text/javascript">
+		var btn = document.querySelector('button');
 		var target = document.querySelector('.dot');
 		var parabola = new Parabola({
 			startPos: {
-				left: 10,
-				top: 400
+				left: 100,
+				top: 300
 			},
 			endPos: {
-				left: 400,
-				top: 80
+				left: 500,
+				top: 20
 			},
 			onStep (pos) {
 				target.style.left = pos.left + 'px';
 				target.style.top = pos.top + 'px';
+				// console.log(pos);
 			},
 			onFinish (pos) {
 				console.log('Animation Finished!');
 			}
 		});
-
 		parabola.start();
-	</script>
+	    btn.addEventListener('click', function () {
+	        parabola.start();
+	    }, false);
+    	</script>
 </body>
 </html>

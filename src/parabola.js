@@ -55,15 +55,14 @@
 
     Parabola.prototype.calPosition = function (progress) {
         // 当前进度下的X轴的位置
-        x = this.opts.startPos.left + this.opts.driftX * progress;
-
+        x = this.opts.driftX * progress;
         // 当前进度下的Y轴的位置
         // y = a*x*x + b*x + c,  c = 0
-        y = this.opts.startPos.top + this.opts.curvature * x * x + this.opts.b * x;
+        y = this.opts.curvature * x * x + this.opts.b * x;
 
         return {
-            left: Math.round(x),
-            top: Math.round(y)
+            left: Math.round(x + this.opts.startPos.left),
+            top: Math.round(y + this.opts.startPos.top)
         }
     }
 
