@@ -7,6 +7,8 @@ JavaScript实现的抛物线轨迹工具
 
 ### DEMO
 
+[See Demo!](http://codepen.io/musiq/pen/EgvdyE)
+
 ### options
 
 `options` Object
