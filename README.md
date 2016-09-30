@@ -14,21 +14,21 @@ JavaScript实现的抛物线轨迹工具
 `options` Object
 
 
-`options.startPos` Object 起始位置
+`options.startPos` Object 起始位置 必需
 
 `options.startPos.left` Number 起始X位置
 
 `options.startPos.top` Number 起始Y位置
 
 
-`options.endPos` Object 结束位置
+`options.endPos` Object 结束位置 必需
 
 `options.endPos.left` Number 结束X位置
 
 `options.endPos.top` Number 结束Y位置
 
 
-`options.duration` Number 动画持续时间
+`options.duration` Number 动画持续时间 默认为2000ms
 
 `options.onStep` Function 动画过程每步回调 接受当前计算出的位置参数
 
