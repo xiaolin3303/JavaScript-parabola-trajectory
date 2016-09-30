@@ -30,7 +30,7 @@ JavaScript实现的抛物线轨迹工具
 
 `options.duration` Number 动画持续时间 (默认为2000ms)
 
-`options.onStep` Function 动画过程每步回调 接受当前计算出的位置参数
+`options.onStep` Function 动画过程每帧回调 接受当前计算出的位置参数
 
 `options.onFinish` Function 动画完成回调 接受当前计算出的位置参数
 
