@@ -58,6 +58,7 @@
         x = this.opts.driftX * progress;
         // 当前进度下的Y轴的位置
         // y = a*x*x + b*x + c,  c = 0
+
         y = this.opts.curvature * x * x + this.opts.b * x;
 
         return {
