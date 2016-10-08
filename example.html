@@ -20,6 +20,28 @@
 			left: 100px;
 			top: 300px;
 		}
+		.scaleAnimation {
+			animation: myScale .7s forwards;
+			-webkit-animation myScale .7s forwards;
+		}
+
+		@keyframes myScale
+		{
+			from {transform: scale(1);}
+			20% {transform: scale(1.3);}
+			65% {transform: scale(0.6);}
+			90% {transform: scale(1.4);}
+			to {transform: scale(0);}
+		}
+
+		@-webkit-keyframes myScale
+		{
+			from {transform: scale(1);}
+			20% {transform: scale(1.3);}
+			65% {transform: scale(0.6);}
+			90% {transform: scale(1.2);}
+			to {transform: scale(0);}
+		}
 	</style>
 	<script type="text/javascript" src="src/parabola.js"></script>
 </head>
@@ -45,11 +67,12 @@
 			},
 			timingFunction: 'easeInOut',
 			onFinish (pos) {
-				console.log('Animation Finished!');
+				target.classList.add('scaleAnimation');
 			}
 		});
-		parabola.start();
+		// parabola.start();
 	    btn.addEventListener('click', function () {
+	    	target.classList.remove('scaleAnimation');
 	        parabola.start();
 	    }, false);
     	</script>
