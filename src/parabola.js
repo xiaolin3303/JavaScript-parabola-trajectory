@@ -20,12 +20,40 @@
         if (!opts.endPos) {
             throw new Error('`endPos` is required in init options');
         }
-        // opts.curvature = opts.curvature || 0.003;
+
         opts.duration = opts.duration || 2000;
+        opts.timingFunction = opts.timingFunction || '';
+        opts.timingFunction = this.timingFunction[opts.timingFunction]
+
+        if (!opts.timingFunction) {
+            opts.timingFunction = this.timingFunction['linear'];
+        }
 
         this.opts = opts;
 
         this.calCurvature();
+    }
+
+    Parabola.prototype.timingFunction = {
+        easeIn: function(pos){
+            return Math.pow(pos, 3);
+        },
+
+        easeOut: function(pos){
+            return (Math.pow((pos - 1), 3) +1);
+        },
+
+        easeInOut: function(pos){
+            if ( (pos /= 0.5) < 1 ) {
+                return 0.5 * Math.pow(pos, 3);
+            } else {     
+                return 0.5 * (Math.pow((pos - 2), 3) + 2);
+            }
+        },
+
+        linear: function(pos) {
+            return pos;
+        },
     }
 
     Parabola.prototype.calCurvature = function () {
@@ -36,26 +64,18 @@
         // 在不超出屏幕范围的前提下，尽量抛得更高，计算合适的曲率 (a)
         var yMin = -1 * this.opts.startPos.top;
 
-        var a = this.power(this.opts.driftX, 4);
-        var b = (4 * yMin - 2 * this.opts.driftY) * this.power(this.opts.driftX, 2);
-        var c = this.power(this.opts.driftY, 2);
+        var a = Math.pow(this.opts.driftX, 4);
+        var b = (4 * yMin - 2 * this.opts.driftY) * Math.pow(this.opts.driftX, 2);
+        var c = Math.pow(this.opts.driftY, 2);
 
-        this.opts.curvature = (-1 * b + Math.sqrt((this.power(b, 2) - 4 * a * c))) / (2 * a);
+        this.opts.curvature = (-1 * b + Math.sqrt((Math.pow(b, 2) - 4 * a * c))) / (2 * a);
 
         this.opts.b = (this.opts.driftY - this.opts.curvature * this.opts.driftX * this.opts.driftX) / this.opts.driftX;
     }
 
-    Parabola.prototype.power = function (v, n) {
-        if (n === 1) {
-            return v;
-        } else {
-            return v * arguments.callee(v, (n - 1));
-        }
-    }
-
     Parabola.prototype.calPosition = function (progress) {
         // 当前进度下的X轴的位置
-        x = this.opts.driftX * progress;
+        x = this.opts.driftX * this.opts.timingFunction(progress);
         // 当前进度下的Y轴的位置
         // y = a*x*x + b*x + c,  c = 0
 

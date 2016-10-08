@@ -37,13 +37,13 @@
 			},
 			endPos: {
 				left: 500,
-				top: 20
+				top: 100
 			},
 			onStep (pos) {
 				target.style.left = pos.left + 'px';
 				target.style.top = pos.top + 'px';
-				// console.log(pos);
 			},
+			timingFunction: 'easeInOut',
 			onFinish (pos) {
 				console.log('Animation Finished!');
 			}
