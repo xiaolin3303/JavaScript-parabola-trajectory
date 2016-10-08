@@ -30,6 +30,8 @@ JavaScript实现的抛物线轨迹工具
 
 `options.duration` Number 动画持续时间 (默认为2000ms)
 
+`options.timingFunction` String 动画效果 可选值 `easeIn` `easeOut` `easeInOut` `linear` (默认linear)
+
 `options.onStep` Function 动画过程每帧回调 接受当前计算出的位置参数
 
 `options.onFinish` Function 动画完成回调 接受当前计算出的位置参数
@@ -37,3 +39,9 @@ JavaScript实现的抛物线轨迹工具
 ### methods
 
 `start` 开始抛物线动画
+
+### 更新记录
+
+###### 2016-10-08
+* 添加缓动函数效果
+
