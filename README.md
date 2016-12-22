@@ -5,11 +5,11 @@ JavaScript实现的抛物线轨迹工具
 
 在不超出屏幕范围的前提下，尽量抛得更高
 
-### DEMO
+# DEMO
 
 [See Demo!](http://codepen.io/musiq/pen/EgvdyE)
 
-### options
+# options
 
 `options` Object
 
@@ -36,12 +36,12 @@ JavaScript实现的抛物线轨迹工具
 
 `options.onFinish` Function 动画完成回调 接受当前计算出的位置参数
 
-### methods
+# methods
 
 `start` 开始抛物线动画
 
-### 更新记录
+# 更新记录
 
-###### 2016-10-08
+# 2016-10-08
 * 添加缓动函数效果
 
